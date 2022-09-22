@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         btnImc = findViewById(R.id.btn_imc)
 
-        btnImc.setOnClickListener{
+        btnImc.setOnClickListener {
 
             val i = Intent(this, ImcActivity::class.java)
             startActivity(i)
