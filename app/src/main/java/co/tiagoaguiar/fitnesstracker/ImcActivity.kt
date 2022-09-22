@@ -1,6 +1,7 @@
 package co.tiagoaguiar.fitnesstracker
 
 import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +21,8 @@ class ImcActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_imc)
+
+
 
         editWeight = findViewById(R.id.edit_imc_weight)
         editHeight = findViewById(R.id.edit_imc_height)
