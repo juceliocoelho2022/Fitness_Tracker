@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity(), OnItemClickListener {
 
-//    private lateinit var btnImc: LinearLayout
 
     private lateinit var rvMain: RecyclerView
 
