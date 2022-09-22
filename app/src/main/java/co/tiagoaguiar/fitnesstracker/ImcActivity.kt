@@ -2,20 +2,21 @@ package co.tiagoaguiar.fitnesstracker
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 
 class ImcActivity : AppCompatActivity() {
 
-    private lateinit var editweight: EditText
+    private lateinit var editWeight: EditText
     private lateinit var editHeight: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_imc)
 
-        editweight = findViewById(R.id.edit_imc_weight)
+        editWeight = findViewById(R.id.edit_imc_weight)
         editHeight = findViewById(R.id.edit_imc_height)
 
         val btnSend: Button = findViewById(R.id.btn_imc_send)
@@ -24,13 +25,22 @@ class ImcActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.fields_messages, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            val weight = editWeight.text.toString().toInt()
+            val height = editHeight.text.toString().toInt()
+
+            val result = calculateImc(weight,height)
+            Log.d("Teste", "resultado: $result")
         }
     }
 
+    private fun calculateImc(weight: Int, height: Int): Double{
+        return weight / ((height /100.0) * (height / 100.0))
+    }
+
     private fun validate(): Boolean {
-        return (editweight.text.toString().isNotEmpty()
+        return (editWeight.text.toString().isNotEmpty()
             && editHeight.text.toString().isNotEmpty()
-            && !editweight.text.toString().startsWith("0")
+            && !editWeight.text.toString().startsWith("0")
             && !editHeight.text.toString().startsWith("0"))
 
         }
