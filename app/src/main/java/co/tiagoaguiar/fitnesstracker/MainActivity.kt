@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = MainAdapter(mainItems)
         rvMain = findViewById(R.id.rv_main)
         rvMain.adapter = adapter
-        rvMain.layoutManager = LinearLayoutManager(this)
+        rvMain.layoutManager = GridLayoutManager(this,2)
 
 //        btnImc = findViewById(R.id.btn_imc)
 
@@ -87,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         fun bind(item: MainItem) {
             val img: ImageView = itemView.findViewById(R.id.item_img_icon)
             val name: TextView = itemView.findViewById(R.id.item_txt_name)
-            val container: LinearLayout = itemView as LinearLayout
+            val container: LinearLayout = itemView.findViewById(R.id.item_container_imc)
 
             img.setImageResource(item.drawableId)
             name.setText(item.textStringId)
