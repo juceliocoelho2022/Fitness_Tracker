@@ -1,8 +1,11 @@
 package co.tiagoaguiar.fitnesstracker
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethod
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -35,12 +38,12 @@ class ImcActivity : AppCompatActivity() {
 
             val imcResponseId = imcResponse(result)
 
-            AlertDialog.Builder(this)
-                .setTitle(getString(R.string.imc_response, result))
+            AlertDialog.Builder(this).setTitle(getString(R.string.imc_response, result))
                 .setMessage(imcResponseId)
-                .setPositiveButton(android.R.string.ok) { dialog, which -> }
-                .create()
-                .show()
+                .setPositiveButton(android.R.string.ok) { dialog, which -> }.create().show()
+
+            val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            service.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
         }
     }
 
