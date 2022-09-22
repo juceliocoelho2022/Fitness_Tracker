@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 
 class ImcActivity : AppCompatActivity() {
 
@@ -33,10 +34,17 @@ class ImcActivity : AppCompatActivity() {
             Log.d("Teste", "resultado: $result")
 
             val imcResponseId = imcResponse(result)
-            Toast.makeText(this, imcResponseId, Toast.LENGTH_SHORT).show()
+
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.imc_response, result))
+                .setMessage(imcResponseId)
+                .setPositiveButton(android.R.string.ok) { dialog, which -> }
+                .create()
+                .show()
         }
     }
- @StringRes
+
+    @StringRes
     private fun imcResponse(imc: Double): Int {
         return when {
             imc < 15.0 -> R.string.imc_severely_low_weight
@@ -56,10 +64,9 @@ class ImcActivity : AppCompatActivity() {
     }
 
     private fun validate(): Boolean {
-        return (editWeight.text.toString().isNotEmpty()
-                && editHeight.text.toString().isNotEmpty()
-                && !editWeight.text.toString().startsWith("0")
-                && !editHeight.text.toString().startsWith("0"))
+        return (editWeight.text.toString().isNotEmpty() && editHeight.text.toString()
+            .isNotEmpty() && !editWeight.text.toString()
+            .startsWith("0") && !editHeight.text.toString().startsWith("0"))
 
     }
 }
