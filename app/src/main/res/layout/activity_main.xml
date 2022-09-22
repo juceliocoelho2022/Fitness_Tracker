@@ -8,6 +8,10 @@
     tools:context=".MainActivity">
 
    <LinearLayout
+<<<<<<< HEAD
+=======
+       android:id="@+id/btn_imc"
+>>>>>>> 3bc6c8e (Fitness Track)
        android:background="@color/colorLightGray"
        android:paddingTop="10dp"
        android:paddingBottom="12dp"
