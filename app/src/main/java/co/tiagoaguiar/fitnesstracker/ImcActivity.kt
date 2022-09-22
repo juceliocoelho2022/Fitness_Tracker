@@ -1,6 +1,7 @@
 package co.tiagoaguiar.fitnesstracker
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -52,10 +53,10 @@ class ImcActivity : AppCompatActivity() {
                         dao.insert(Calc(type = "imc", res = result))
 
                         runOnUiThread {
-                            Toast.makeText(this@ImcActivity, R.string.save, Toast.LENGTH_LONG)
-                                .show()
+                            val intent = Intent(this@ImcActivity, ListCalcActivity::class.java)
+                            intent.putExtra("type", "imc")
+                            startActivity(intent)
                         }
-
 
                     }.start()
                 }
